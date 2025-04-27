@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\User; 
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -13,7 +14,7 @@ class ClienteController extends Controller
     public function index()
     {
         $clients = Cliente::all();
-        return view('clients.index', compact('clients'));
+        return view('clientes.index', compact('clients'));
     }
 
     /**
@@ -21,7 +22,9 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('clients.create');
+        
+        $users = User::all();
+        return view('clientes.create', compact('users'));
     }
 
     /**
@@ -38,25 +41,28 @@ class ClienteController extends Controller
 
         Cliente::create($request->all());
 
-        return redirect()->route('clients.index')->with('success', 'Cliente creado exitosamente.');
+        return redirect()->route('clientes.index')->with('success', 'Cliente creado exitosamente.');
    
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Cliente $cliente)
+    public function show(Cliente $client)
     {
-        return view('clients.show', compact('client'));
+        $users = User::all();
+        return view('clientes.show', compact('client','users'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cliente $cliente)
+    public function edit(Cliente $client)
     {
-        return view('clients.edit', compact('client'));
+        $users = User::all();
+        return view('clientes.edit', compact('client', 'users'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -71,7 +77,7 @@ class ClienteController extends Controller
 
         $client->update($request->all());
 
-        return redirect()->route('clients.index')->with('success', 'Cliente actualizado exitosamente.');
+        return redirect()->route('clientes.index')->with('success', 'Cliente actualizado exitosamente.');
     }
 
     /**
@@ -81,6 +87,6 @@ class ClienteController extends Controller
     {
         $client->delete();
 
-        return redirect()->route('clients.index')->with('success', 'Cliente eliminado exitosamente.');
+        return redirect()->route('clientes.index')->with('success', 'Cliente eliminado exitosamente.');
     }
 }

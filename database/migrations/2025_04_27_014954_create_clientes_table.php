@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Relación con users
+            $table->string('address')->nullable();
+            $table->string('phone', 20)->nullable();
             $table->timestamps();
         });
     }

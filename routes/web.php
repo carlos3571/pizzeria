@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BranchController;
-use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ExtraIngredientController;
 use App\Http\Controllers\IngredientController;
@@ -19,7 +19,7 @@ use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::get('/dashboard', function () {
@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
 
     // CRUDs de la pizzería
     Route::resource('branches', BranchController::class);
-    Route::resource('clients', ClientController::class);
+    Route::resource('clients', ClienteController::class);
     Route::resource('employees', EmployeeController::class);
     Route::resource('extra-ingredients', ExtraIngredientController::class);
     Route::resource('ingredients', IngredientController::class);
