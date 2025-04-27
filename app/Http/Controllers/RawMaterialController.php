@@ -13,7 +13,7 @@ class RawMaterialController extends Controller
     public function index()
     {
         $rawMaterials = RawMaterial::all();
-        return view('raw_materials.index', compact('rawMaterials'));
+        return view('rawmaterials.index', compact('rawMaterials'));
     }
 
     /**
@@ -21,7 +21,7 @@ class RawMaterialController extends Controller
      */
     public function create()
     {
-        return view('raw_materials.create');
+        return view('rawmaterials.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class RawMaterialController extends Controller
 
         RawMaterial::create($request->all());
 
-        return redirect()->route('raw-materials.index')->with('success', 'Materia prima creada exitosamente.');
+        return redirect()->route('rawmaterials.index')->with('success', 'Materia prima creada exitosamente.');
     }
 
     /**
@@ -45,7 +45,7 @@ class RawMaterialController extends Controller
      */
     public function show(RawMaterial $rawMaterial)
     {
-        return view('raw_materials.show', compact('rawMaterial'));
+        return view('rawmaterials.show', compact('rawMaterial'));
     }
 
     /**
@@ -53,7 +53,7 @@ class RawMaterialController extends Controller
      */
     public function edit(RawMaterial $rawMaterial)
     {
-        return view('raw_materials.edit', compact('rawMaterial'));
+        return view('rawmaterials.edit', compact('rawMaterial'));
     }
 
     /**
@@ -69,7 +69,7 @@ class RawMaterialController extends Controller
 
         $rawMaterial->update($request->all());
 
-        return redirect()->route('raw-materials.index')->with('success', 'Materia prima actualizada exitosamente.');
+        return redirect()->route('rawmaterials.index')->with('success', 'Materia prima actualizada exitosamente.');
     }
 
     /**
@@ -79,6 +79,6 @@ class RawMaterialController extends Controller
     {
         $rawMaterial->delete();
 
-        return redirect()->route('raw-materials.index')->with('success', 'Materia prima eliminada exitosamente.');
+        return redirect()->route('rawmaterials.index')->with('success', 'Materia prima eliminada exitosamente.');
     }
 }
