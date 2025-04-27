@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PizzaSize;
+use App\Models\Pizza;
 use Illuminate\Http\Request;
 
 class PizzaSizeController extends Controller
@@ -12,7 +13,8 @@ class PizzaSizeController extends Controller
      */
     public function index()
     {
-        //
+        $pizzaSizes = PizzaSize::with('pizza')->get();
+        return view('pizza_sizes.index', compact('pizzaSizes'));
     }
 
     /**
@@ -20,7 +22,8 @@ class PizzaSizeController extends Controller
      */
     public function create()
     {
-        //
+        $pizzas = Pizza::all(); // Para seleccionar a qué pizza pertenece
+        return view('pizza_sizes.create', compact('pizzas'));
     }
 
     /**
@@ -28,7 +31,15 @@ class PizzaSizeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'pizza_id' => 'required|exists:pizzas,id',
+            'size' => 'required|in:pequeña,mediana,grande',
+            'price' => 'required|numeric|min:0',
+        ]);
+
+        PizzaSize::create($request->all());
+
+        return redirect()->route('pizza-sizes.index')->with('success', 'Tamaño de pizza creado exitosamente.');
     }
 
     /**
@@ -36,7 +47,7 @@ class PizzaSizeController extends Controller
      */
     public function show(PizzaSize $pizzaSize)
     {
-        //
+        return view('pizza_sizes.show', compact('pizzaSize'));
     }
 
     /**
@@ -44,7 +55,8 @@ class PizzaSizeController extends Controller
      */
     public function edit(PizzaSize $pizzaSize)
     {
-        //
+        $pizzas = Pizza::all();
+        return view('pizza_sizes.edit', compact('pizzaSize', 'pizzas'));
     }
 
     /**
@@ -52,7 +64,15 @@ class PizzaSizeController extends Controller
      */
     public function update(Request $request, PizzaSize $pizzaSize)
     {
-        //
+        $request->validate([
+            'pizza_id' => 'required|exists:pizzas,id',
+            'size' => 'required|in:pequeña,mediana,grande',
+            'price' => 'required|numeric|min:0',
+        ]);
+
+        $pizzaSize->update($request->all());
+
+        return redirect()->route('pizza-sizes.index')->with('success', 'Tamaño de pizza actualizado exitosamente.');
     }
 
     /**
@@ -60,6 +80,8 @@ class PizzaSizeController extends Controller
      */
     public function destroy(PizzaSize $pizzaSize)
     {
-        //
+        $pizzaSize->delete();
+
+        return redirect()->route('pizza-sizes.index')->with('success', 'Tamaño de pizza eliminado exitosamente.');
     }
 }

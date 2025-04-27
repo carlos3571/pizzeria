@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Client;
+use App\Models\Branch;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -12,7 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::with(['client', 'branch', 'deliveryPerson'])->get();
+        return view('orders.index', compact('orders'));
     }
 
     /**
@@ -20,7 +24,10 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $clients = Client::all();
+        $branches = Branch::all();
+        $employees = Employee::all();
+        return view('orders.create', compact('clients', 'branches', 'employees'));
     }
 
     /**
@@ -28,7 +35,18 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'client_id' => 'required|exists:clients,id',
+            'branch_id' => 'required|exists:branches,id',
+            'total_price' => 'required|numeric|min:0',
+            'status' => 'required|in:pendiente,en_preparacion,listo,entregado',
+            'delivery_type' => 'required|in:en_local,a_domicilio',
+            'delivery_person_id' => 'nullable|exists:employees,id',
+        ]);
+
+        Order::create($request->all());
+
+        return redirect()->route('orders.index')->with('success', 'Pedido creado exitosamente.');
     }
 
     /**
@@ -36,7 +54,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('orders.show', compact('order'));
     }
 
     /**
@@ -44,7 +62,10 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        $clients = Client::all();
+        $branches = Branch::all();
+        $employees = Employee::all();
+        return view('orders.edit', compact('order', 'clients', 'branches', 'employees'));
     }
 
     /**
@@ -52,7 +73,18 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $request->validate([
+            'client_id' => 'required|exists:clients,id',
+            'branch_id' => 'required|exists:branches,id',
+            'total_price' => 'required|numeric|min:0',
+            'status' => 'required|in:pendiente,en_preparacion,listo,entregado',
+            'delivery_type' => 'required|in:en_local,a_domicilio',
+            'delivery_person_id' => 'nullable|exists:employees,id',
+        ]);
+
+        $order->update($request->all());
+
+        return redirect()->route('orders.index')->with('success', 'Pedido actualizado exitosamente.');
     }
 
     /**
@@ -60,6 +92,8 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+
+        return redirect()->route('orders.index')->with('success', 'Pedido eliminado exitosamente.');
     }
 }

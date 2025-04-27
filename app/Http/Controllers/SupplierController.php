@@ -12,7 +12,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        $suppliers = Supplier::all();
+        return view('suppliers.index', compact('suppliers'));
     }
 
     /**
@@ -20,7 +21,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('suppliers.create');
     }
 
     /**
@@ -28,7 +29,14 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'contact_info' => 'nullable|string|max:255',
+        ]);
+
+        Supplier::create($request->all());
+
+        return redirect()->route('suppliers.index')->with('success', 'Proveedor creado exitosamente.');
     }
 
     /**
@@ -36,7 +44,7 @@ class SupplierController extends Controller
      */
     public function show(Supplier $supplier)
     {
-        //
+        return view('suppliers.show', compact('supplier'));
     }
 
     /**
@@ -44,7 +52,7 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        //
+        return view('suppliers.edit', compact('supplier'));
     }
 
     /**
@@ -52,7 +60,14 @@ class SupplierController extends Controller
      */
     public function update(Request $request, Supplier $supplier)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'contact_info' => 'nullable|string|max:255',
+        ]);
+
+        $supplier->update($request->all());
+
+        return redirect()->route('suppliers.index')->with('success', 'Proveedor actualizado exitosamente.');
     }
 
     /**
@@ -60,6 +75,8 @@ class SupplierController extends Controller
      */
     public function destroy(Supplier $supplier)
     {
-        //
+        $supplier->delete();
+
+        return redirect()->route('suppliers.index')->with('success', 'Proveedor eliminado exitosamente.');
     }
 }

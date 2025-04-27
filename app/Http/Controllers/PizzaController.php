@@ -12,7 +12,8 @@ class PizzaController extends Controller
      */
     public function index()
     {
-        //
+        $pizzas = Pizza::all();
+        return view('pizzas.index', compact('pizzas'));
     }
 
     /**
@@ -20,7 +21,7 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        //
+        return view('pizzas.create');
     }
 
     /**
@@ -28,7 +29,13 @@ class PizzaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        Pizza::create($request->all());
+
+        return redirect()->route('pizzas.index')->with('success', 'Pizza creada exitosamente.');
     }
 
     /**
@@ -36,7 +43,7 @@ class PizzaController extends Controller
      */
     public function show(Pizza $pizza)
     {
-        //
+        return view('pizzas.show', compact('pizza'));
     }
 
     /**
@@ -44,7 +51,7 @@ class PizzaController extends Controller
      */
     public function edit(Pizza $pizza)
     {
-        //
+        return view('pizzas.edit', compact('pizza'));
     }
 
     /**
@@ -52,7 +59,13 @@ class PizzaController extends Controller
      */
     public function update(Request $request, Pizza $pizza)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $pizza->update($request->all());
+
+        return redirect()->route('pizzas.index')->with('success', 'Pizza actualizada exitosamente.');
     }
 
     /**
@@ -60,6 +73,8 @@ class PizzaController extends Controller
      */
     public function destroy(Pizza $pizza)
     {
-        //
+        $pizza->delete();
+
+        return redirect()->route('pizzas.index')->with('success', 'Pizza eliminada exitosamente.');
     }
 }
