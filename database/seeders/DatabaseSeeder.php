@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             UsuarioSeeder::class,
             ClienteSeeder::class,
             EmployeeSeeder::class,
+            IngredientSeeder::class,
         ]);
     }
 }
