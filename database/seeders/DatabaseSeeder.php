@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
             EmployeeSeeder::class,
             IngredientSeeder::class,
             RawMaterialSeeder::class,
+            PizzaSeeder::class,
+            PizzaSizeSeeder::class,
+
         ]);
     }
 }

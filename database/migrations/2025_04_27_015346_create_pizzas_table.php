@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('pizzas', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 255); // ➡️ Aquí agregamos el campo que falta
             $table->timestamps();
         });
     }
