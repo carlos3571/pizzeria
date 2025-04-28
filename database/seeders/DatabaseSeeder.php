@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             ExtraIngredientSeeder::class,
             OrderSeeder::class,
             OrderPizzaSeeder::class,
+            OrderExtraIngredientSeeder::class,
 
 
         ]);
