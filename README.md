@@ -27,11 +27,11 @@ Laravel has the most extensive and thorough [documentation](https://laravel.com/
 
 You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
 ## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
 ### Premium Partners
 
@@ -39,10 +39,15 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[Tighten Co.](https://tighten.co)**
 - **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
 - **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
 - **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+- **[OP.GG](https://op.gg)**
+- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+- **[Lendio](https://lendio.com)**
 
 ## Contributing
 
@@ -59,3 +64,48 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# PIZZERIA - Sistema de Venta de pizzas
+
+Este proyecto está desarrollado en **Laravel 11** y permite gestionar eventos deportivos, equipos y participaciones. Incluye autenticación mediante Laravel Breeze y protección de rutas mediante middleware `auth`.
+
+---
+
+## ✅ Requisitos Previos
+
+Antes de iniciar, asegúrate de tener instalados:
+
+### 1. XAMPP
+Descargar desde:  
+👉 https://www.apachefriends.org/es/index.html  
+- Activa **Apache** y **MySQL** desde el panel de control.
+
+#### Comandos para ejecucción
+```bash
+BasedeDatos la base de datos  debe estar creada se llama con en el archivo .env  
+DB_DATABASE=pizzeria
+```
+
+### 2. Composer
+Descargar desde:  
+👉 https://getcomposer.org/download/  
+- Es necesario para gestionar dependencias de Laravel.
+
+---
+
+## ⚙️ Instalación del Proyecto
+
+### 1. Clona el repositorio (o copia el código fuente)
+```bash
+cd C:\xampp\htdocs
+git clone https://github.com/carlos3571/pizzeria-app.git
+cd pizzeria
+```
+### Comandos para ejecucción
+```bash
+Dependencias composer install
+Migrations php artisan migrate:fresh --seed
+Npmdependency npm install
+runProject   php artisan serve
+```
+
