@@ -24,7 +24,7 @@ class Order extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Cliente::class);
     }
 
     public function branch()

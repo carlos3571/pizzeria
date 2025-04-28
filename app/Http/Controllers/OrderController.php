@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\Client;
+use App\Models\Cliente;
 use App\Models\Branch;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -24,10 +24,10 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $clients = Client::all();
+        $clientes = Cliente::all();
         $branches = Branch::all();
         $employees = Employee::all();
-        return view('orders.create', compact('clients', 'branches', 'employees'));
+        return view('orders.create', compact('clientes', 'branches', 'employees'));
     }
 
     /**
@@ -62,7 +62,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        $clients = Client::all();
+        $clients = Cliente::all();
         $branches = Branch::all();
         $employees = Employee::all();
         return view('orders.edit', compact('order', 'clients', 'branches', 'employees'));
