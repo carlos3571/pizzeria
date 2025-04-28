@@ -26,5 +26,12 @@ class UsuarioSeeder extends Seeder
             'password' => Hash::make('password123'), // Importante encriptar
             'role' => 'cliente', // Porque tu tabla tiene un campo 'role'
         ]);
+
+        User::create([
+            'name' => 'John  Castaño',
+            'email' => 'cliente2@pizzeria.com',
+            'password' => Hash::make('password123'), // Importante encriptar
+            'role' => 'cliente', // Porque tu tabla tiene un campo 'role'
+        ]);
     }
 }

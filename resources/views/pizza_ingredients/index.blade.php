@@ -5,10 +5,10 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-between mb-6">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Tamaños de Pizzas
+                Ingredientes de las Pizzas
             </h2>
-            <a href="{{ route('pizza-sizes.create') }}" class="">
-                Crear Tamaño
+            <a href="{{ route('pizza-ingredients.create') }}" class="">
+                Asignar Ingrediente
             </a>
         </div>
 
@@ -25,21 +25,17 @@
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pizza</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tamaño</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ingrediente</th>
                                 <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            @forelse ($pizzaSizes as $pizzaSize)
+                            @forelse ($pizzaIngredients as $pizzaIngredient)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ $pizzaSize->pizza->name ?? '-' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap capitalize">{{ $pizzaSize->size }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">${{ number_format($pizzaSize->price, 2) }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $pizzaIngredient->pizza->name ?? '-' }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $pizzaIngredient->ingredient->name ?? '-' }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        
-                                        <a href="{{ route('pizza-sizes.edit', $pizzaSize->id) }}" class="text-yellow-600 hover:text-yellow-900 mr-2">Editar</a>
-                                        <form action="{{ route('pizza-sizes.destroy', $pizzaSize->id) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Seguro de eliminar este tamaño?')">
+                                        <form action="{{ route('pizza-ingredients.destroy', $pizzaIngredient->id) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Seguro de eliminar esta relación?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-600 hover:text-red-900">Eliminar</button>
@@ -48,8 +44,8 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="px-6 py-4 whitespace-nowrap text-center text-gray-500">
-                                        No hay tamaños registrados.
+                                    <td colspan="3" class="px-6 py-4 whitespace-nowrap text-center text-gray-500">
+                                        No hay ingredientes asignados.
                                     </td>
                                 </tr>
                             @endforelse
