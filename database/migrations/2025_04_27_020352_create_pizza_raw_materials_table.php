@@ -8,17 +8,20 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('raw_materials', function (Blueprint $table) {
+        Schema::create('pizza_raw_materials', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('unit', 50);
-            $table->integer('current_stock')->default(0);
+            $table->unsignedBigInteger('pizza_id');
+            $table->unsignedBigInteger('raw_material_id');
+            $table->decimal('quantity', 8, 2);
             $table->timestamps();
+
+            $table->foreign('pizza_id')->references('id')->on('pizzas')->onDelete('cascade');
+            $table->foreign('raw_material_id')->references('id')->on('raw_materials')->onDelete('cascade');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('raw_materials');
+        Schema::dropIfExists('pizza_raw_materials');
     }
 };
