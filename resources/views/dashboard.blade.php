@@ -59,6 +59,12 @@
                 <p class="text-sm text-gray-500">Administrar Proveedores</p>
             </a>
 
+            <!-- Branches -->
+            <a href="{{ route('branches.index') }}" class="block bg-white p-6 rounded-lg shadow hover:bg-gray-100">
+                <h3 class="text-lg font-bold text-gray-700">Branches</h3>
+                <p class="text-sm text-gray-500">Administrar Sucursales</p>
+            </a>
+
         </div>
     </div>
 </div>
