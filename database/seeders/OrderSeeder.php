@@ -22,7 +22,7 @@ class OrderSeeder extends Seeder
         $employees = Employee::all();
         
         if ($clientes->isEmpty() || $branches->isEmpty()) {
-            $this->command->warn('🚫 Se necesitan clientes y sucursales para crear órdenes.');
+            $this->command->warn(' Se necesitan clientes y sucursales para crear órdenes.');
             return;
         }
 

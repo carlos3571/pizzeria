@@ -7,7 +7,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Sucursales
             </h2>
-            <a href="{{ route('branches.create') }}" class="">
+            <a href="{{ route('branches.create') }}" class="bg-blue-500 ...">
                 Crear Sucursal
             </a>
         </div>
