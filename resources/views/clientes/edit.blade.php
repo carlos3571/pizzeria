@@ -31,7 +31,7 @@
                     <input type="text" name="phone" value="{{ $client->phone }}" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
                 </div>
 
-                <button type="submit" class="bg-blue-500">
+                <button type="submit" class="">
                     Actualizar
                 </button>
             </form>

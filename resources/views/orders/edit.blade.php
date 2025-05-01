@@ -62,7 +62,14 @@
                     </select>
                 </div>
 
-                <button type="submit" class="inline-flex items-center px-6 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Precio Total</label>
+                    <input type="number" name="total_price" value="{{ $order->total_price }}" step="0.01" min="0"
+                        class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                </div>
+                
+
+                <button type="submit" class="">
                     Actualizar
                 </button>
             </form>

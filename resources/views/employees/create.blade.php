@@ -20,7 +20,7 @@
 
                 <div class="mb-4">
                     <label class="block text-gray-700 mb-2">Cargo</label>
-                    <select name="position" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                    <select name="position" class="bg-blue-500 ..." required>
                         <option value="cajero">Cajero</option>
                         <option value="administrador">Administrador</option>
                         <option value="cocinero">Cocinero</option>

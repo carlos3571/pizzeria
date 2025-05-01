@@ -36,7 +36,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'client_id' => 'required|exists:clients,id',
+            'client_id' => 'required|exists:clientes,id',
             'branch_id' => 'required|exists:branches,id',
             'total_price' => 'required|numeric|min:0',
             'status' => 'required|in:pendiente,en_preparacion,listo,entregado',
@@ -74,7 +74,7 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         $request->validate([
-            'client_id' => 'required|exists:clients,id',
+            'client_id' => 'required|exists:clientes,id',
             'branch_id' => 'required|exists:branches,id',
             'total_price' => 'required|numeric|min:0',
             'status' => 'required|in:pendiente,en_preparacion,listo,entregado',

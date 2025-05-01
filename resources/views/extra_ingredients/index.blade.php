@@ -46,7 +46,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="3" class="px-6 py-4 whitespace-nowrap text-center text-gray-500">
+                                    <td colspan="3" class="bg-blue-500 ...">
                                         No hay ingredientes extra registrados.
                                     </td>
                                 </tr>

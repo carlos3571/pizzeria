@@ -37,7 +37,7 @@ class RawMaterialController extends Controller
 
         RawMaterial::create($request->all());
 
-        return redirect()->route('rawmaterials.index')->with('success', 'Materia prima creada exitosamente.');
+        return redirect()->route('raw-materials.index')->with('success', 'Materia prima creada exitosamente.');
     }
 
     /**
@@ -69,7 +69,7 @@ class RawMaterialController extends Controller
 
         $rawMaterial->update($request->all());
 
-        return redirect()->route('rawmaterials.index')->with('success', 'Materia prima actualizada exitosamente.');
+        return redirect()->route('raw-materials.index')->with('success', 'Materia prima actualizada exitosamente.');
     }
 
     /**
@@ -79,6 +79,6 @@ class RawMaterialController extends Controller
     {
         $rawMaterial->delete();
 
-        return redirect()->route('rawmaterials.index')->with('success', 'Materia prima eliminada exitosamente.');
+        return redirect()->route('raw-materials.index')->with('success', 'Materia prima eliminada exitosamente.');
     }
 }

@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     use HasFactory;
+    protected $table = 'clientes'; // 👈 Esto soluciona el error
+
 
     protected $fillable = [
         'user_id',
