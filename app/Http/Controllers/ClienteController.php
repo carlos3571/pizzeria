@@ -67,7 +67,7 @@ class ClienteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request, Cliente $client)
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
@@ -78,12 +78,13 @@ class ClienteController extends Controller
         $client->update($request->all());
 
         return redirect()->route('clients.index')->with('success', 'Cliente actualizado exitosamente.');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cliente $cliente)
+    public function destroy(Cliente $client)
     {
         $client->delete();
 
